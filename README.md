@@ -26,6 +26,10 @@ This project showcases a modern and visually stunning business card designed usi
     -   `svg` for the custom logo.
 -   **SVG:** For creating the scalable vector graphics logo.
 
+
+- **I am John soltan** - and this is my youtube Chanell: [(https://www.youtube.com/@Webea)]
+
+
 ## Getting Started
 
 1.  **Clone the repository:** `git clone https://github.com/your-username/your-repo-name.git`
@@ -43,13 +47,7 @@ This project showcases a modern and visually stunning business card designed usi
 
 Contributions are welcome! Feel free to submit pull requests or open issues for any bugs or suggestions.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Author
-
--   **[Your Name/Username]** - [Your Website/Portfolio Link]
 
 ## Screenshots
 
