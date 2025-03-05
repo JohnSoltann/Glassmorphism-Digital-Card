@@ -1,0 +1,308 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #001824;
+}
+
+.background {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% 40%, 
+    #0088cc 0%, 
+    #006699 20%,
+    #004d73 40%, 
+    #003349 70%,
+    #001824 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    perspective: 2000px;
+}
+
+/* Ambient light effect */
+
+.background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.15) 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 70%);;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+}
+
+/* Palm leaves with multiple layers */
+
+.background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('palm-leaves-1.png') no-repeat center top,
+    url('palm-leaves-2.png') no-repeat center top;
+    background-size: cover;
+    opacity: 0.08;
+    filter: blur(1px);
+    animation: ambientMove 15s infinite alternate ease-in-out;
+}
+
+@keyframes ambientmove {
+    0% { transform: scale(1.05) translate(-1%, -1%); }
+    100% { transform: scale(1) translate(1%, 1%); }
+}
+.card {
+    width: 450px;
+    height: 250px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.18) 0%,
+        rgba(255, 255, 255, 0.08) 40%,
+        rgba(255, 255, 255, 0.02) 100%
+    );
+    backdrop-filter: blur(15px) saturate(120%);
+    -webkit-backdrop-filter: blur(15px) saturate(120%);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transform: perspective(2000px) rotateX(12deg) rotateY(-8deg) translateZ(30px);
+    transform-style: preserve-3d;
+    box-shadow: 35px -35px 80px rgba(0, 0, 0, 0.5),
+    -35px 35px 80px rgba(0, 0, 0, 0.5),
+    inset 0 0 80px rgba(255, 255, 255, 0.03),
+    0 0 40px rgba(0, 0, 0, 0.3);
+    margin-bottom: 100px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: perspective(2000px) rotateX(10deg) rotateY(-6deg) translateZ(40px);
+    box-shadow: 
+    40px -40px 90px rgba(0, 0, 0, 0.5),
+        -40px 40px 90px rgba(0, 0, 0, 0.5),
+        inset 0 0 80px rgba(255, 255, 255, 0.04),
+        0 0 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Enhanced corner highlights */
+
+.card::before,
+.card::after {
+    content: '';
+    position: absolute;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.18) 30%,
+        rgba(255, 255, 255, 0.05) 60%,
+        transparent 80%
+    );   
+}
+
+card::before {
+    width: 200px;
+    height: 200px;
+    top: -50px;
+    left: -50px;
+    opacity: 0.7;
+    filter: blur(3px);
+}
+
+.card::after {
+    width: 120px;
+    height: 120px;
+    bottom: -25px;
+    right: -25px;
+    opacity: 0.4;
+    filter: blur(1px);
+}
+
+/* Improved reflection */
+
+.card-reflection {
+    position: absolute;
+    width: 100px;
+    height: 14px;
+    bottom: 140px;
+    left: 0;
+    transform: rotateX(180deg) translateY(82%);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.08) 20%,
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 80%
+    );
+    filter: blur(3px);
+    opacity: 0.5;
+    border-radius: 20px;
+    pointer-events: none;
+}
+
+/* Enhanced shine animation */
+
+.shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        125deg,
+        transparent 0%,
+        transparent 35%,
+        rgba(255, 255, 255, 0.25) 40%,
+        rgba(255, 255, 255, 0.25) 60%,
+        transparent 65%,
+        transparent 100%
+    );
+    border-radius: 20px;
+    animation: shine 5s infinite;
+    opacity: 0;
+}
+
+@keyframes shine {
+    0% {
+        left: -200%;
+        opacity: 0;
+    }
+    35% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    60%{
+        opacity: 0.6;
+    }
+    65% {
+        opacity: 0;
+    }
+    100% {
+        left: 200%;
+        opacity: 0;
+    }
+}
+
+/* Improved shadow animation */
+.card-shadow {
+    position: absolute;
+    bottom: -50%;
+    left: 5%;
+    right: 5%;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.45);
+    filter: blur(25px);
+    border-radius: 50%;
+    transform: rotatex(45deg) translateZ(-60px);
+    opacity: 0.5;
+    animation: shadowPluse 4s infinite alternate ease-in-out ;
+}
+
+@keyframes shadowplus {
+    0% {
+        opacity: 0.4;
+        transform: rotateX('45deg') translateZ(-60px) scale(0.97);
+        filter: blur(25px);
+    }
+    100% {
+        opacity: 0.5;
+        transform: rotateX('45deg') translateZ(-60px) scale(1.03);
+        filter: blur(20px);
+    }
+}
+
+/* Content styles with enhanced visual hierarchy */
+
+.logo {
+    width: 70px;
+    height: 70px;
+    border-right: 2px solid rgba(255, 255, 255, 0.15);
+    padding-right: 25px;
+    margin-right: 25px;
+    position: relative;
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    right: 1px;
+    top: 10px;
+    height: 80%;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.4) 20%,
+        rgba(255, 255, 255, 0.4) 80%,
+        transparent
+    );
+    filter: blur(0.5px);
+}
+
+.logo svg {
+    width: 100%;
+    height: 100%;
+    stroke: white;
+    stroke-width: 2;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.3));
+}
+
+.info {
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.name {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    position: relative;
+    text-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300px;
+    background: linear-gradient(
+        to right
+        rgba(255,255,255,0.9),
+        rgba(255,255,255,0.7)
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+    letter-spacing: 0.5px;
+}
+
+.contact {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact div {
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-left: 5px;
+}
+
+.contact div:hover {
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateX(3px);
+    transition: all 0.3s ease;
+}
